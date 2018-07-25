@@ -1,0 +1,102 @@
+package com.some.lenovo.number_system_project;
+
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+public class b2oSol extends AppCompatActivity {
+    EditText input;
+    Button convert,b0,b1,clr;
+    TextView output;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_b2o_sol);
+
+        input=(EditText)findViewById(R.id.inputb2o);
+        convert=(Button)findViewById(R.id.button19);
+        output=(TextView)findViewById(R.id.textView9);
+        b0=(Button)findViewById(R.id.button22);
+        b1=(Button)findViewById(R.id.button21);
+        clr=(Button)findViewById(R.id.button24);
+
+        //Hide Keyboard
+        input.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InputMethodManager inputMethodManager= (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
+
+
+            }
+        });
+
+
+        convert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String text = input.getText().toString();
+                int a=text.length();
+
+                if(text.isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(),"Write Some Value for Input",Toast.LENGTH_LONG).show();
+
+                }
+                else if(a>31){
+
+                    Toast.makeText(getApplicationContext(),"You cannot Exceed above 31 digits   ",Toast.LENGTH_LONG).show();
+                }
+
+                else{
+                    int Decimal = Integer.parseInt(text, 2);
+                    String octal= Integer.toOctalString(Decimal);
+                    output.setText("  " +octal);
+                }
+            }
+        });
+
+
+        b0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "0"));
+
+            }
+        });
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "1"));
+
+            }
+        });
+
+        clr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(input.length()==0){
+                    Toast.makeText(getApplicationContext(),"Previous data is clered",Toast.LENGTH_LONG).show();
+                }else{
+                    input.setText(input.getText().delete(input.getText().length()-1,input.getText().length()));
+                }
+
+            }
+        });
+
+
+
+
+    }
+}

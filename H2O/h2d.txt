@@ -1,0 +1,232 @@
+package com.some.lenovo.number_system_project;
+
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class h2d_sol extends AppCompatActivity {
+    EditText input;
+    Button done,clr,h0, h1, h2, h3, h4, h5, h6, h7, h8, h9,hA,hB,hC,hD,hE,hF;
+    TextView output;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_h2d_sol);
+
+        clr = (Button) findViewById(R.id.button62);
+        input = (EditText) findViewById(R.id.E23);
+        done = (Button) findViewById(R.id.button63);
+        output = (TextView) findViewById(R.id.textView11);
+        h0 = (Button) findViewById(R.id.button39);
+        h1 = (Button) findViewById(R.id.button40);
+        h2 = (Button) findViewById(R.id.button41);
+        h3 = (Button) findViewById(R.id.button42);
+        h4 = (Button) findViewById(R.id.button43);
+        h5 = (Button) findViewById(R.id.button44);
+        h6 = (Button) findViewById(R.id.button45);
+        h7 = (Button) findViewById(R.id.button46);
+        h8 = (Button) findViewById(R.id.button51);
+        h9 = (Button) findViewById(R.id.button52);
+        hA= (Button) findViewById(R.id.button53);
+        hB= (Button) findViewById(R.id.button54);
+        hC= (Button) findViewById(R.id.button55);
+        hD= (Button) findViewById(R.id.button56);
+        hE= (Button) findViewById(R.id.button60);
+        hF= (Button) findViewById(R.id.button61);
+
+        input.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InputMethodManager inputMethodManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+
+            }
+        });
+        clr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(input.length()==0){
+                    Toast.makeText(getApplicationContext(),"Previous data is clered",Toast.LENGTH_LONG).show();
+                }else{
+                    input.setText(input.getText().delete(input.getText().length()-1,input.getText().length()));
+                }
+
+            }
+        });
+
+
+
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String text = input.getText().toString();
+                int a = text.length();
+
+                if (text.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Write Some Value for Input", Toast.LENGTH_LONG).show();
+
+                }
+                else if(a>7){
+
+                    Toast.makeText(getApplicationContext(),"You cannot Exceed above 7 input digits   ",Toast.LENGTH_LONG).show();
+                }
+
+                else {
+
+                    int dec = Integer.parseInt(text,16);
+                    output.setText("  " +dec);
+                }
+            }
+
+
+        });
+
+        h0.setOnClickListener(new View.OnClickListener() {                             // Button 0
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "0"));
+
+            }
+        });
+
+
+        h1.setOnClickListener(new View.OnClickListener() {                             // Button 1
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "1"));
+
+            }
+        });
+
+        h2.setOnClickListener(new View.OnClickListener() {                             // Button 2
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "2"));
+
+            }
+        });
+
+        h3.setOnClickListener(new View.OnClickListener() {                             // Button 3
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "3"));
+
+            }
+        });
+
+        h4.setOnClickListener(new View.OnClickListener() {                             // Button 4
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "4"));
+
+            }
+        });
+
+        h5.setOnClickListener(new View.OnClickListener() {                             // Button 5
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "5"));
+
+            }
+        });
+
+        h6.setOnClickListener(new View.OnClickListener() {                             // Button 6
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "6"));
+
+            }
+        });
+
+        h7.setOnClickListener(new View.OnClickListener() {                             // Button 7
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "7"));
+
+            }
+        });
+
+        h8.setOnClickListener(new View.OnClickListener() {                             // Button 8
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "8"));
+
+            }
+        });
+        h7.setOnClickListener(new View.OnClickListener() {                             // Button 9
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "7"));
+
+            }
+        });
+
+        h9.setOnClickListener(new View.OnClickListener() {                             // Button 9
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "9"));
+
+            }
+        });
+
+        hA.setOnClickListener(new View.OnClickListener() {                             // Button 9
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "A"));
+
+            }
+        });
+
+        hB.setOnClickListener(new View.OnClickListener() {                             // Button 9
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "B"));
+
+            }
+        });
+
+        hC.setOnClickListener(new View.OnClickListener() {                             // Button 9
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "C"));
+
+            }
+        });
+        hD.setOnClickListener(new View.OnClickListener() {                             // Button 9
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "D"));
+
+            }
+        });
+        hE.setOnClickListener(new View.OnClickListener() {                             // Button 9
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "E"));
+
+            }
+        });
+        hF.setOnClickListener(new View.OnClickListener() {                             // Button 9
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "F"));
+
+            }
+        });
+
+
+
+
+
+    }
+}

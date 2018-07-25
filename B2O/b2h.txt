@@ -1,0 +1,105 @@
+package com.some.lenovo.number_system_project;
+
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class b2hSol extends AppCompatActivity {
+    Button convert,clr,h0,h1;
+    TextView output;
+    EditText input;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_b2h_sol);
+        input=(EditText)findViewById(R.id.inputb2h);
+        output=(TextView)findViewById(R.id.textView7);
+        convert=(Button)findViewById(R.id.button14);
+        clr=(Button)findViewById(R.id.button24);
+        h0=(Button)findViewById(R.id.button22);
+        h1=(Button)findViewById(R.id.button21);
+
+
+               h0.setOnClickListener(new View.OnClickListener() {                             // Button 0
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "0"));
+
+            }
+        });
+
+        h1.setOnClickListener(new View.OnClickListener() {                             // Button 1
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "1"));
+
+            }
+        });
+
+
+        clr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //input.setText(input.getText().delete(input.getText().length()-1,input.getText().length()));
+                if(input.length()==0){
+                    Toast.makeText(getApplicationContext(),"Previous data is clered",Toast.LENGTH_LONG).show();
+                }else{
+                    input.setText(input.getText().delete(input.getText().length()-1,input.getText().length()));
+                }
+
+            }
+        });
+        input.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                InputMethodManager inputMethodManager= (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
+
+
+            }
+        });
+
+        convert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String text = input.getText().toString();
+                int a=text.length();
+
+                if(text.isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(),"Write Some Value for Input",Toast.LENGTH_LONG).show();
+
+                }
+                else if(a>31){
+
+                    Toast.makeText(getApplicationContext(),"You cannot Exceed above 31 digits   ",Toast.LENGTH_LONG).show();
+                }
+
+                else{
+                    int Decimal = Integer.parseInt(text, 2);
+                    String hex= Integer.toHexString(Decimal);
+
+                     output.setText("  " +hex);
+
+                }
+            }
+        });
+
+
+
+
+    }
+
+
+}

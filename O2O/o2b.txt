@@ -1,0 +1,161 @@
+package com.some.lenovo.number_system_project;
+
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class o2b_sol extends AppCompatActivity {
+    Button o0, o1, o2, o3, o4, o5, o6, o7,clr,done;
+    EditText input;
+    TextView output;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_o2b_sol);
+
+        clr = (Button) findViewById(R.id.button79);
+        input = (EditText) findViewById(R.id.inputo2b);
+        done = (Button) findViewById(R.id.button80);
+        output = (TextView) findViewById(R.id.textView21);
+        o0 = (Button) findViewById(R.id.button71);
+        o1 = (Button) findViewById(R.id.button72);
+        o2 = (Button) findViewById(R.id.button73);
+        o3 = (Button) findViewById(R.id.button74);
+        o4 = (Button) findViewById(R.id.button75);
+        o5 = (Button) findViewById(R.id.button76);
+        o6 = (Button) findViewById(R.id.button77);
+        o7 = (Button) findViewById(R.id.button78);
+
+
+
+        o0.setOnClickListener(new View.OnClickListener() {                             // Button 0
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "0"));
+
+            }
+        });
+
+
+        o1.setOnClickListener(new View.OnClickListener() {                             // Button 1
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "1"));
+
+            }
+        });
+
+        o2.setOnClickListener(new View.OnClickListener() {                             // Button 2
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "2"));
+
+            }
+        });
+
+        o3.setOnClickListener(new View.OnClickListener() {                             // Button 3
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "3"));
+
+            }
+        });
+
+        o4.setOnClickListener(new View.OnClickListener() {                             // Button 4
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "4"));
+
+            }
+        });
+
+        o5.setOnClickListener(new View.OnClickListener() {                             // Button 5
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "5"));
+
+            }
+        });
+
+        o6.setOnClickListener(new View.OnClickListener() {                             // Button 6
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "6"));
+
+            }
+        });
+
+        o7.setOnClickListener(new View.OnClickListener() {                             // Button 7
+            @Override
+            public void onClick(View view) {
+                input.setText(input.getText().insert(input.getText().length(), "7"));
+
+            }
+        });
+
+
+
+
+
+        input.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InputMethodManager inputMethodManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+
+            }
+        });
+        clr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(input.length()==0){
+                    Toast.makeText(getApplicationContext(),"Previous data is clered",Toast.LENGTH_LONG).show();
+                }else{
+                    input.setText(input.getText().delete(input.getText().length()-1,input.getText().length()));
+                }
+
+            }
+        });
+
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String text = input.getText().toString();
+                int a = text.length();
+
+                if (text.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Write Some Value for Input", Toast.LENGTH_LONG).show();
+
+                }
+                else if(a>10){
+
+                    Toast.makeText(getApplicationContext(),"You cannot Exceed above 10 input digits   ",Toast.LENGTH_LONG).show();
+                }
+
+                else {
+                    int dec = Integer.parseInt(text,8);
+                    String binary = Integer.toBinaryString(dec);
+
+                    output.setText("  " + binary);
+
+                }
+            }
+
+
+        });
+
+
+
+
+    }
+}
